@@ -1,0 +1,1 @@
+{"id":"BSLMyVotes","name":"BSL My Votes","author":"BSLMyVotes contributors","version":"1.0.0","description":"Offline personal vote filters for BetterSongList.","gameVersion":"1.40.8","dependsOn":{"BSIPA":"^4.3.5","BetterSongList":"^0.4.2","SongCore":"^3.15.1"}}

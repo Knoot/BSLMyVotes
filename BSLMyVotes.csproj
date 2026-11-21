@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Version>1.0.0</Version>
+    <DebugType>none</DebugType>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
+    <PathMap>$(MSBuildProjectDirectory)=/src/BSLMyVotes</PathMap>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Plugin.cs;Models/**/*.cs;Voting/**/*.cs;Filters/**/*.cs" />
+    <EmbeddedResource Include="manifest.json" LogicalName="BSLMyVotes.manifest.json" />
+    <Reference Include="IPA.Loader"><HintPath>$(GamePath)/IPA/Data/Managed/IPA.Loader.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="BetterSongList"><HintPath>$(GamePath)/Plugins/BetterSongList.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="DataModels"><HintPath>$(GamePath)/Beat Saber_Data/Managed/DataModels.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Main"><HintPath>$(GamePath)/Beat Saber_Data/Managed/Main.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Newtonsoft.Json"><HintPath>$(GamePath)/Libs/Newtonsoft.Json.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(GamePath)/Beat Saber_Data/Managed/UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+  <Target Name="CheckGamePath" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(GamePath)/Plugins/BetterSongList.dll')" Text="Pass -p:GamePath=... pointing to a Beat Saber installation with BetterSongList." />
+  </Target>
+</Project>
+
+
